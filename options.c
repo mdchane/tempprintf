@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:57:33 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/06 16:05:18 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/10 10:06:58 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int		ft_options_cmp(t_final *final, const char *fm)
 	printf("options i = %d\n", i);
 	return (i - 1);
 }
+
+
 
 int		ft_larg_min(t_final *final, const char *fm)
 {
