@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:57:33 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/10 10:06:58 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/10 14:24:14 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 void	ft_print_final(t_final *final)
 {
-	printf("\n---------------\nprint_final : \nstr = %s\nlarg_min = %d\ntaille = %d\ntype = %d\n",
-		final->str, final->larg_min, final->taille, final->type);
+	printf("\n---------------\nprint_final : \nstr = %s\nlarg_min = %d\nprecision = %d\ntype = %c\n",
+		final->str, final->larg_min, final->precision, final->type);
+	printf("options:\n-+#0s\n");
 	ft_foreach(final->options, NB_OPTIONS, ft_putnbr);
+	printf("\nmodif:\nhlL\n");
+	ft_foreach(final->modif, NB_MODIF, ft_putnbr);
 	printf("\n---------------\n");
 }
 
@@ -30,7 +33,7 @@ t_final	*init_final_format()
 	return (final);
 }
 
-int		ft_options_cmp(t_final *final, const char *fm)
+int		ft_get_options(t_final *final, const char *fm)
 {
 	int		i;
 
@@ -49,33 +52,81 @@ int		ft_options_cmp(t_final *final, const char *fm)
 			final->options[SPACE] = 1;
 		i++;
 	}
-	printf("options i = %d\n", i);
 	return (i - 1);
 }
 
-
-
-int		ft_larg_min(t_final *final, const char *fm)
+int		ft_get_larg_min(t_final *final, const char *fm)
 {
 	int		i;
 
 	i = 0;
-	printf("larg_min begin i = %d = %c\n", i, fm[i]);
 	if (fm[i] == '%' || ft_is_options(fm[i]))
 	{
 		i++;
-		while (fm[i] >= '0' && fm[i] <= '9')
+		while (ft_isdigit(fm[i]))
 		{
 			final->larg_min = final->larg_min * 10 + fm[i] - '0';
-			printf("larg_min = %d\n", final->larg_min);
 			i++;
 		}
 	}
-	printf("larg_min i last = %d\n", i);
-	return (i);
+	return (i - 1);
 }
 
-int		ft_format(va_list va, const char *format)
+int		ft_get_precision(t_final *final, const char *fm)
+{
+	int		i;
+
+	i = 0;
+	if (fm[i] == '%' || ft_is_options(fm[i]) || ft_isdigit(fm[i]))
+	{
+		i++;
+		if (fm[i] == '.')
+		{
+			i++;
+			while (ft_isdigit(fm[i]))
+			{
+				final->precision = final->precision * 10 + fm[i] - '0';
+				i++;
+			}
+		}
+	}
+	return (i - 1);
+}
+
+int		ft_get_modif(t_final *final, const char *fm)
+{
+	int		i;
+
+	i = 0;
+	if (fm[i] == '%' || ft_is_options(fm[i]) || ft_isdigit(fm[i]))
+	{
+		i++;
+		while (ft_is_modif(fm[i]))
+		{
+			if (fm[i] == 'h' && fm[i + 1] == 'h')
+				final->modif[h] = 2;
+			else if (fm[i] == 'h' && final->modif[h] != 2)
+				final->modif[h] = 1;
+			else if (fm[i] == 'l')
+				final->modif[l] = 1;
+			else if (fm[i] == 'L')
+				final->modif[L] = 1;
+			i++;
+		}
+	}
+	return (i - 1);
+}
+
+int		ft_get_type(t_final final, const char *fm)
+{
+	if (fm[i] == '%' || ft_is_options(fm[i]) || ft_isdigit(fm[i]) || ft_is_modif(fm[i]))
+	{
+		i++;
+		if (fm[i] == 'c' ||)
+	}
+}
+
+int		ft_get_format(va_list va, const char *format)
 {
 	int		i;
 	t_final	*final;
@@ -83,8 +134,15 @@ int		ft_format(va_list va, const char *format)
 	(void)va;
 	final = init_final_format();
 	i = 0;
-	i += ft_options_cmp(final, format);
-	i += ft_larg_min(final, format + i);
+	printf("fm[%d] = %c\n", i, format[i]);
+	i += ft_get_options(final, format);
+	printf("fm[%d] = %c\n", i, format[i]);
+	i += ft_get_larg_min(final, format + i);
+	printf("fm[%d] = %c\n", i, format[i]);
+	i += ft_get_precision(final, format + i);
+	printf("fm[%d] = %c\n", i, format[i]);
+	i += ft_get_modif(final, format + i);
+	printf("fm[%d] = %c\n", i, format[i]);
 	ft_print_final(final);
 	return (i);
 }

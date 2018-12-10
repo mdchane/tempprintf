@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 10:30:59 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/06 16:05:40 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/10 14:10:08 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 
 int		main()
 {
-	int		i = -2147483648;
-	char	*s;
+	int		i = 125;
 
-	s = ft_strdup("coucou");
-	ft_printf("%+- 0#1241684.2d", i);
+	ft_printf("%+- 0#42.21Lhlhhhd", i);
+	printf("%+- 010hdp", i);
 	return (0);
 }
