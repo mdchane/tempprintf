@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   options.c                                          :+:      :+:    :+:   */
+/*   get_format.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:57:33 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/10 14:24:14 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/14 16:30:11 by dchane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_print_final(t_final *final)
 {
-	printf("\n---------------\nprint_final : \nstr = %s\nlarg_min = %d\nprecision = %d\ntype = %c\n",
-		final->str, final->larg_min, final->precision, final->type);
+	printf("\n---------------\nprint_final : \nlarg_min = %d\nprecision = %d\ntype = %c\n",
+	final->larg_min, final->precision, final->type);
 	printf("options:\n-+#0s\n");
 	ft_foreach(final->options, NB_OPTIONS, ft_putnbr);
 	printf("\nmodif:\nhlL\n");
@@ -28,7 +28,6 @@ t_final	*init_final_format()
 	t_final *final;
 
 	final = ft_memalloc(sizeof(t_final));
-	final->str = ft_strnew(5);
 	ft_print_final(final);
 	return (final);
 }
@@ -117,32 +116,31 @@ int		ft_get_modif(t_final *final, const char *fm)
 	return (i - 1);
 }
 
-int		ft_get_type(t_final final, const char *fm)
+int		ft_get_type(t_final *final, const char *fm)
 {
+	int		i;
+
+	i = 0;
 	if (fm[i] == '%' || ft_is_options(fm[i]) || ft_isdigit(fm[i]) || ft_is_modif(fm[i]))
 	{
 		i++;
-		if (fm[i] == 'c' ||)
+		final->type = fm[i];
 	}
+	return (i + 1);
 }
 
-int		ft_get_format(va_list va, const char *format)
+int		ft_get_format(va_list va, const char *format, p_func  *tab[NB_FORMATS])
 {
 	int		i;
 	t_final	*final;
 
-	(void)va;
 	final = init_final_format();
 	i = 0;
-	printf("fm[%d] = %c\n", i, format[i]);
 	i += ft_get_options(final, format);
-	printf("fm[%d] = %c\n", i, format[i]);
 	i += ft_get_larg_min(final, format + i);
-	printf("fm[%d] = %c\n", i, format[i]);
 	i += ft_get_precision(final, format + i);
-	printf("fm[%d] = %c\n", i, format[i]);
 	i += ft_get_modif(final, format + i);
-	printf("fm[%d] = %c\n", i, format[i]);
-	ft_print_final(final);
+	i += ft_get_type(final, format + i);
+	print_format(va, final, tab);
 	return (i);
 }

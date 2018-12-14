@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 09:58:22 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/10 14:16:09 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/14 16:29:00 by dchane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,10 @@ typedef enum	s_modif
 	h = 0, l, L, NB_MODIF
 }				t_modif;
 
+typedef int (*p_func)(va_list);
+
 typedef struct s_final
 {
-	char	*str;
 	int		options[NB_OPTIONS];
 	int		larg_min;
 	int		precision;
@@ -54,8 +55,9 @@ int			aff_int(va_list av);
 
 int			ft_get_options(t_final *final, const char *fm);
 int			ft_get_larg_min(t_final *final, const char *fm);
-int			ft_get_format(va_list va, const char *format);
+int			ft_get_format(va_list va, const char *format, p_func  *tab[NB_FORMATS]);
 int			ft_is_options(char c);
 int			ft_is_modif(char c);
-
+void    	init_tab_func(p_func  *tab[NB_FORMATS]);
+int    	 	print_format(va_list va, t_final *final, p_func  *tab[NB_FORMATS]);
 #endif
