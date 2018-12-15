@@ -6,7 +6,7 @@
 /*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:57:33 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/14 16:30:11 by dchane           ###   ########.fr       */
+/*   Updated: 2018/12/15 14:17:03 by dchane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ t_final	*init_final_format()
 	t_final *final;
 
 	final = ft_memalloc(sizeof(t_final));
-	ft_print_final(final);
 	return (final);
 }
 
@@ -129,7 +128,7 @@ int		ft_get_type(t_final *final, const char *fm)
 	return (i + 1);
 }
 
-int		ft_get_format(va_list va, const char *format, p_func  *tab[NB_FORMATS])
+int		ft_get_format(va_list va, const char *format, p_func  *tab)
 {
 	int		i;
 	t_final	*final;
@@ -141,6 +140,7 @@ int		ft_get_format(va_list va, const char *format, p_func  *tab[NB_FORMATS])
 	i += ft_get_precision(final, format + i);
 	i += ft_get_modif(final, format + i);
 	i += ft_get_type(final, format + i);
+	ft_print_final(final);
 	print_format(va, final, tab);
 	return (i);
 }

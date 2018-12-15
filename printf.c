@@ -6,7 +6,7 @@
 /*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 12:27:25 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/14 16:27:42 by dchane           ###   ########.fr       */
+/*   Updated: 2018/12/15 14:17:07 by dchane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int		ft_printf(const char *format, ...)
 {
 	va_list	av;
 	size_t	i;
-	p_func  *tab[NB_FORMATS];
+	p_func  *tab;
 
-	init_tab_func(tab);
+	tab = init_tab_func();
 	va_start(av, format);
 	i = 0;
 	while (format[i])
