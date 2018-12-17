@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_format.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:57:33 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/15 14:17:03 by dchane           ###   ########.fr       */
+/*   Updated: 2018/12/17 12:04:06 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,6 @@ int		ft_get_format(va_list va, const char *format, p_func  *tab)
 	i += ft_get_precision(final, format + i);
 	i += ft_get_modif(final, format + i);
 	i += ft_get_type(final, format + i);
-	ft_print_final(final);
 	print_format(va, final, tab);
-	return (i);
+	return (i - 1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 10:30:59 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/15 14:23:28 by dchane           ###   ########.fr       */
+/*   Updated: 2018/12/17 12:18:28 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 
 int		main()
 {
-	int		i = 125;
+	wint_t	i = 'l';
 	char	c = 'o';
 
-	ft_printf("%c\n", c);
+	ft_printf("my printf :\nc : %c et z : %lc\n", i, i);
+	printf("real printf :\nc : %c et z : %lc\n", i, i);
 	printf("%c\n", c);
 	printf("%+c\n", c);
 	printf("%-c\n", c);

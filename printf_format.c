@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printf_format.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 15:51:52 by dchane            #+#    #+#             */
-/*   Updated: 2018/12/15 14:15:38 by dchane           ###   ########.fr       */
+/*   Updated: 2018/12/17 11:46:32 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@ p_func  *init_tab_func()
     p_func  *tab;
 
     tab = (p_func *)malloc(sizeof(p_func) * 128);
-    tab['c'] = aff_char;
+    tab['c'] = aff_c;
     return (tab);
 }
 
 int     print_format(va_list va, t_final *final, p_func  *tab)
 {
-    tab[final->type](va);
+	int		i;
 
-    return (0);
+	i = 0;
+    i += tab[final->type](final, va);
+    return (i);
 }
