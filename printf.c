@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 12:27:25 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/17 12:04:34 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/17 14:25:07 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,5 @@ int		ft_printf(const char *format, ...)
 		i++;
 	}
 	va_end(av);
-	ft_putchar('\n');
 	return (1);
 }

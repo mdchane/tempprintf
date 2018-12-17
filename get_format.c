@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:57:33 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/17 12:04:06 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/17 14:06:13 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int		ft_get_options(t_final *final, const char *fm)
 		else if (fm[i] == ' ')
 			final->options[SPACE] = 1;
 		i++;
+		final->options[ONE_OPT] = 1;
 	}
 	return (i - 1);
 }
