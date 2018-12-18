@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   aff_str.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/01 10:30:59 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/18 11:44:15 by mdchane          ###   ########.fr       */
+/*   Created: 2018/12/18 09:46:07 by mdchane           #+#    #+#             */
+/*   Updated: 2018/12/18 11:15:16 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libftprintf.h"
-#include <locale.h>
 
-int		main()
+int	aff_str(t_final *final, va_list av)
 {
-	setlocale(LC_ALL, "");
-	char	c = 'o';
+	char	*str;
 
-	ft_printf("my printf\n");
-	printf("real printf\n");
-	printf("%p\n", &c);
-	printf("%+40p\n", &c);
-	printf("%-40p\n", &c);
-	printf("% 40p\n", &c);
-	printf("%040p\n", &c);
-	printf("%#40p\n", &c);
-	printf("%40p\n", &c);
-
-	return (0);
+	str = va_arg(av, char *);
+	if (final->options[MINUS] == 1)
+		ft_putstr(str);
+	if (final->options[ZERO] == 1)
+		put_n_char('0', final->larg_min - ft_strlen(str));
+	else
+		put_n_char(' ', final->larg_min - ft_strlen(str));
+	if (final->options[MINUS] == 0)
+	{
+		ft_putstr(str);
+	}
+	return (1);
 }

@@ -1,49 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_format.c                                    :+:      :+:    :+:   */
+/*   aff_c.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/14 15:51:52 by dchane            #+#    #+#             */
-/*   Updated: 2018/12/18 11:14:16 by mdchane          ###   ########.fr       */
+/*   Created: 2018/12/18 09:12:02 by mdchane           #+#    #+#             */
+/*   Updated: 2018/12/18 11:12:50 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	put_n_char(char c, int n)
+int	aff_char(t_final *final, va_list av)
 {
-	int		i;
+	wint_t	c;
 
-	i = -1;
-	while (++i < n)
+	if (final->modif[l] == 1)
+		c  = (unsigned long)va_arg(av, unsigned long);
+	else
+		c = (char)va_arg(av, int);
+	c = (wint_t)c;
+	if (final->options[MINUS] == 1)
 		ft_putchar(c);
-}
-
-p_func  *init_tab_func()
-{
-	p_func	*tab;
-
-	tab = (p_func *)malloc(sizeof(p_func) * 128);
-	tab['c'] = aff_char;
-	tab['s'] = aff_str;
-	return (tab);
-}
-
-void	print_options(t_final *final, int len_arg)
-{
-	if (final->options[ONE_OPT] != 1)
+	if (final->options[ZERO] == 1)
+		put_n_char('0', final->larg_min - 1);
+	else
+		put_n_char(' ', final->larg_min - 1);
+	if (final->options[MINUS] == 0)
 	{
-
+		ft_putchar(c);
 	}
-}
-
-int		print_format(va_list va, t_final *final, p_func  *tab)
-{
-	int		i;
-
-	i = 0;
-	i += tab[final->type](final, va);
-	return (i);
+	return (1);
 }
