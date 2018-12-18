@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   aff_str.c                                          :+:      :+:    :+:   */
+/*   aff_s.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 09:46:07 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/18 11:15:16 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/18 15:37:53 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ int	aff_str(t_final *final, va_list av)
 	else
 		put_n_char(' ', final->larg_min - ft_strlen(str));
 	if (final->options[MINUS] == 0)
-	{
 		ft_putstr(str);
-	}
 	return (1);
 }
