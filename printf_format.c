@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 15:51:52 by dchane            #+#    #+#             */
-/*   Updated: 2018/12/18 11:14:16 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/18 14:27:26 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ p_func  *init_tab_func()
 	tab = (p_func *)malloc(sizeof(p_func) * 128);
 	tab['c'] = aff_char;
 	tab['s'] = aff_str;
+	tab['p'] = aff_ptr;
 	return (tab);
 }
 

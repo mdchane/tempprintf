@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mdchane <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/10 08:36:51 by mdchane           #+#    #+#              #
-#    Updated: 2018/11/15 09:31:42 by mdchane          ###   ########.fr        #
+#    Updated: 2018/12/18 14:14:38 by mdchane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,9 @@ SRCS = ft_atoi.c\
 	   ft_islower.c\
 	   ft_pow.c\
 	   ft_sqrt.c\
-	   ft_foreach.c
+	   ft_foreach.c\
+	   ft_strrev.c\
+	   ft_itoa_base.c
 
 OBJS = $(SRCS:.c=.o)
 
