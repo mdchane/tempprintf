@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 15:51:52 by dchane            #+#    #+#             */
-/*   Updated: 2018/12/18 14:27:26 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/19 09:57:48 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,9 @@ p_func  *init_tab_func()
 	tab['c'] = aff_char;
 	tab['s'] = aff_str;
 	tab['p'] = aff_ptr;
+	tab['d'] = aff_int;
+	tab['i'] = aff_int;
 	return (tab);
-}
-
-void	print_options(t_final *final, int len_arg)
-{
-	if (final->options[ONE_OPT] != 1)
-	{
-
-	}
 }
 
 int		print_format(va_list va, t_final *final, p_func  *tab)

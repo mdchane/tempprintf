@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:57:33 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/18 15:25:15 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/19 11:56:32 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		ft_get_options(t_final *final, const char *fm)
 {
 	int		i;
 
-	i = 1;
+	i = 0;
 	while (ft_is_options(fm[i]))
 	{
 		if (fm[i] == '-')
@@ -63,7 +63,7 @@ int		ft_get_larg_min(t_final *final, const char *fm)
 	int		i;
 
 	i = 0;
-	if (fm[i] == '%' || ft_is_options(fm[i]))
+	if (ft_is_options(fm[i]))
 	{
 		i++;
 		while (ft_isdigit(fm[i]))
@@ -80,7 +80,7 @@ int		ft_get_precision(t_final *final, const char *fm)
 	int		i;
 
 	i = 0;
-	if (fm[i] == '%' || ft_is_options(fm[i]) || ft_isdigit(fm[i]))
+	if (ft_is_options(fm[i]) || ft_isdigit(fm[i]))
 	{
 		i++;
 		if (fm[i] == '.')
@@ -101,7 +101,7 @@ int		ft_get_modif(t_final *final, const char *fm)
 	int		i;
 
 	i = 0;
-	if (fm[i] == '%' || ft_is_options(fm[i]) || ft_isdigit(fm[i]))
+	if (ft_is_options(fm[i]) || ft_isdigit(fm[i]) || fm[i] == '.')
 	{
 		i++;
 		while (ft_is_modif(fm[i]))
@@ -125,7 +125,7 @@ int		ft_get_type(t_final *final, const char *fm)
 	int		i;
 
 	i = 0;
-	if (fm[i] == '%' || ft_is_options(fm[i]) || ft_isdigit(fm[i]) || ft_is_modif(fm[i]))
+	if (ft_is_options(fm[i]) || ft_isdigit(fm[i]) || ft_is_modif(fm[i]) || fm[i] == '.')
 	{
 		i++;
 		final->type = fm[i];
@@ -145,6 +145,7 @@ int		ft_get_format(va_list va, const char *format, p_func  *tab)
 	i += ft_get_precision(final, format + i);
 	i += ft_get_modif(final, format + i);
 	i += ft_get_type(final, format + i);
+	ft_print_final(final);
 	print_format(va, final, tab);
-	return (i - 1);
+	return (i);
 }

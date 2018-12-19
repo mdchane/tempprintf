@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 12:27:25 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/17 14:25:07 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/19 11:59:47 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		ft_printf(const char *format, ...)
 	while (format[i])
 	{
 		if (format[i] == '%')
-			i += ft_get_format(av, format + i, tab);
+			i += ft_get_format(av, format + i + 1, tab);
 		else
 			ft_putchar(format[i]);
 		i++;

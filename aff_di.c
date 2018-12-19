@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   output.c                                           :+:      :+:    :+:   */
+/*   aff_di.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 11:51:05 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/18 09:46:34 by mdchane          ###   ########.fr       */
+/*   Created: 2018/12/19 09:55:16 by mdchane           #+#    #+#             */
+/*   Updated: 2018/12/19 10:02:08 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-
-
-int	aff_int(va_list av)
+int	aff_int(t_final *final, va_list av)
 {
-	ft_putnbr(va_arg(av, int));
-	return (1);
+
 }

@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/10 12:45:07 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/18 14:17:10 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/19 09:41:53 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ char				**ft_strsplit(char const *s, char c);
 void				ft_strrev(char *str);
 
 char				*ft_itoa(int n);
-char				*ft_itoa_base(unsigned long nbr, int base);
+char				*ft_itoa_base(long long nbr, int base);
 
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
