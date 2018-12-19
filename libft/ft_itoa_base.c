@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 11:28:58 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/19 09:41:31 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/19 12:51:45 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,13 @@ static int	ft_len_num_base(long long n, int base)
 	return (len);
 }
 
-char	*solve(long long nbr, char *str, int neg, int i, int base)
+void	check_neg(int *nbr, int *base)
 {
-	int			rest;
-
-	while (nbr != 0)
+	if (*nbr < 0 && *base == 10)
 	{
-		rest = nbr % base;
-		str[i++] = (rest > 9) ? (rest - 10) + 'a' : rest + '0';
-		nbr = nbr / base;
+		*neg = 1;
+		*nbr = -(*nbr);
 	}
-	if (neg)
-		str[i++] = '-';
-	str[i] = '\0';
-	ft_strrev(str);
-	return (str);
 }
 
 char		*ft_itoa_base(long long nbr, int base)
@@ -55,6 +47,7 @@ char		*ft_itoa_base(long long nbr, int base)
 	int			len;
 	int			i;
 	int			neg;
+	int			rest;
 
 	neg = 0;
 	len = ft_len_num_base(nbr, base);
@@ -67,11 +60,16 @@ char		*ft_itoa_base(long long nbr, int base)
 		str[i] = '\0';
 		return (str);
 	}
-	if (nbr < 0 && base == 10)
+	check_neg(&nbr, &base);
+	while (nbr != 0)
 	{
-		neg = 1;
-		nbr = -nbr;
+		rest = nbr % base;
+		str[i++] = (rest > 9) ? (rest - 10) + 'a' : rest + '0';
+		nbr = nbr / base;
 	}
-	str = solve(nbr, str, neg, i, base);
+	if (neg)
+		str[i++] = '-';
+	str[i] = '\0';
+	ft_strrev(str);
 	return (str);
 }
