@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 09:58:22 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/19 09:56:58 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/20 12:07:00 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,24 +43,25 @@ typedef struct s_final
 	int		precision;
 	int		modif[NB_MODIF];
 	char	type;
+	int		nb_print;
 }				t_final;
 
 typedef int (*p_func)(t_final *, va_list);
 
 int			ft_printf(const char *format, ...);
 
-
-
+t_final	*	init_final_format();
+void		ft_print_final(t_final *final);
 int			ft_get_options(t_final *final, const char *fm);
 int			ft_get_larg_min(t_final *final, const char *fm);
-int			ft_get_format(va_list va, const char *format, p_func  *tab);
 int			ft_is_options(char c);
 int			ft_is_modif(char c);
+int			ft_get_format(const char *format, p_func *tab, t_final *final);
 
 
 p_func		*init_tab_func();
-int			print_format(va_list va, t_final *final, p_func  *tab);
-void		put_n_char(char c, int n);
+int			print_format(va_list va, const char *format, p_func *tab, size_t *nb_print);
+int			put_n_char(char c, int n);
 
 int			aff_char(t_final *final, va_list av);
 int			aff_str(t_final *final, va_list av);

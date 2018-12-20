@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 09:46:07 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/19 11:55:44 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/20 12:17:59 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,17 @@
 int	aff_str(t_final *final, va_list av)
 {
 	char	*str;
+	int		nb_print;
 
+	nb_print = 0;
 	str = va_arg(av, char *);
 	if (final->options[MINUS] == 1)
-		ft_putstr(str);
+		nb_print += ft_putstr(str);
 	if (final->options[ZERO] == 1)
-		put_n_char('0', final->larg_min - ft_strlen(str));
+		nb_print += put_n_char('0', final->larg_min - ft_strlen(str));
 	else
-		put_n_char(' ', final->larg_min - ft_strlen(str));
+		nb_print += put_n_char(' ', final->larg_min - ft_strlen(str));
 	if (final->options[MINUS] == 0)
-		ft_putstr(str);
-	return (1);
+		nb_print += ft_putstr(str);
+	return (nb_print);
 }

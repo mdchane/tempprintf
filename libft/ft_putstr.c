@@ -6,13 +6,16 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/10 12:35:25 by mdchane           #+#    #+#             */
-/*   Updated: 2018/11/17 10:12:50 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/20 11:35:02 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char const *s)
+int	ft_putstr(char const *s)
 {
-	ft_putstr_fd(s, 1);
+	if (s == NULL)
+		return (0);
+	write(1, s, ft_strlen(s));
+	return (ft_strlen(s));
 }

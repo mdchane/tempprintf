@@ -6,70 +6,33 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 11:28:58 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/19 12:51:45 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/20 09:50:36 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static int	ft_len_num_base(long long n, int base)
+char	*ft_itoa_base(long value, int base)
 {
-	int	len;
+	char	*s;
+	long	n;
+	int		sign;
+	int		i;
 
-	if (n == 0)
-		return (1);
-	len = 0;
-	if (n < 0)
-	{
-		len++;
-		n = n * -1;
-	}
-	while (n > 0)
-	{
-		n = n / base;
-		len++;
-	}
-	return (len);
-}
-
-void	check_neg(int *nbr, int *base)
-{
-	if (*nbr < 0 && *base == 10)
-	{
-		*neg = 1;
-		*nbr = -(*nbr);
-	}
-}
-
-char		*ft_itoa_base(long long nbr, int base)
-{
-	char		*str;
-	int			len;
-	int			i;
-	int			neg;
-	int			rest;
-
-	neg = 0;
-	len = ft_len_num_base(nbr, base);
-	if (!(str = (char *)malloc(sizeof(char) * (len + 2))))
+	n = (value < 0) ? -(long)value : value;
+	sign = (value < 0 && base == 10) ? -1 : 0;
+	i = (sign == -1) ? 2 : 1;
+	while ((n /= base) >= 1)
+		i++;
+	if (!(s = (char*)malloc(sizeof(char) * (i + 1))))
 		return (NULL);
-	i = 0;
-	if (nbr == 0)
+	s[i] = '\0';
+	n = (value < 0) ? -(long)value : value;
+	while (i-- + sign)
 	{
-		str[i++] = '0';
-		str[i] = '\0';
-		return (str);
+		s[i] = (n % base < 10) ? n % base + '0' : n % base + 'a' - 10;
+		n /= base;
 	}
-	check_neg(&nbr, &base);
-	while (nbr != 0)
-	{
-		rest = nbr % base;
-		str[i++] = (rest > 9) ? (rest - 10) + 'a' : rest + '0';
-		nbr = nbr / base;
-	}
-	if (neg)
-		str[i++] = '-';
-	str[i] = '\0';
-	ft_strrev(str);
-	return (str);
+	(i == 0) ? s[i] = '-' : 0;
+	return (s);
 }

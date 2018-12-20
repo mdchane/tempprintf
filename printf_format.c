@@ -6,19 +6,20 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 15:51:52 by dchane            #+#    #+#             */
-/*   Updated: 2018/12/19 09:57:48 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/20 12:07:43 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	put_n_char(char c, int n)
+int	put_n_char(char c, int n)
 {
 	int		i;
 
 	i = -1;
 	while (++i < n)
 		ft_putchar(c);
+	return (i);
 }
 
 p_func  *init_tab_func()
@@ -34,11 +35,13 @@ p_func  *init_tab_func()
 	return (tab);
 }
 
-int		print_format(va_list va, t_final *final, p_func  *tab)
+int		print_format(va_list va, const char *format, p_func *tab, size_t *nb_print)
 {
 	int		i;
+	t_final	*final;
 
-	i = 0;
-	i += tab[final->type](final, va);
+	final = init_final_format();
+	i = ft_get_format(format, tab, final);
+	*nb_print += tab[final->type](final, va);
 	return (i);
 }
