@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 09:55:16 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/24 12:18:39 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/24 12:47:03 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,25 +55,33 @@ int		ft_opt_zero(t_final *final, char *str, int *nb_print)
 	return (1);
 }
 
-void	ft_opt_others(t_final *final, char *str, int *nb_print)
+intmax_t	cast_nbr(t_final *final, va_list av)
 {
-	*nb_print += put_n_char(' ', final->larg_min - ft_strlen(str) - 1 -
-			final->options[PLUS] - final->options[SPACE]);
-		if (final->options[PLUS] && !final->options[MINUS])
-			ft_putchar('+');
-}
+	intmax_t	nbr;
 
+	if (final->modif[h] == 1)
+		nbr = (short)(va_arg(av, int));
+	else if (final->modif[h] == 2)
+		nbr = (signed char)(va_arg(av, int));
+	else if (final->modif[l] == 1)
+		nbr = (long)(va_arg(av, long int));
+	else if (final->modif[l] == 2)
+		nbr = (long long)(va_arg(av, long long int));
+	else
+		nbr = (int)va_arg(av, int);
+	return (nbr);
+}
 
 int		aff_int(t_final *final, va_list av)
 {
-	long long	nbr;
+	intmax_t	nbr;
 	char		*str;
 	int			nb_print;
 	int			flag;
 
 	flag = 0;
 	nb_print = 0;
-	nbr = (long long)va_arg(av, long long);
+	nbr = cast_nbr(final, av);
 	str = ft_itoa_base(nbr, 10);
 	str = str_with_precision(str, final->precision);;
 	if (final->options[MINUS])
@@ -81,7 +89,12 @@ int		aff_int(t_final *final, va_list av)
 	if (final->options[ZERO] && final->precision == 0)
 		flag = ft_opt_zero(final, str, &nb_print);
 	else
-		ft_opt_others(final, str, &nb_print);
+	{
+		nb_print += put_n_char(' ', final->larg_min - ft_strlen(str) - 1 -
+			final->options[PLUS] - final->options[SPACE]);
+		if (final->options[PLUS] && !final->options[MINUS])
+			ft_putchar('+');
+	}
 	if (flag == 0)
 		ft_putstr(str);
 	return (nb_print);
