@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 09:55:16 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/24 12:47:03 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/24 16:14:22 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,24 +34,28 @@ char	*str_with_precision(char *str, int precision)
 	return (str);
 }
 
-int		ft_opt_minus(t_final *final, char *str, int *nb_print)
+int		ft_opt_minus(t_final *final, char *str, int *nb_print, int neg)
 {
-	if (final->options[PLUS])
+	if (final->options[PLUS] && neg == 0)
 			*nb_print += ft_putchar('+');
-		if (final->options[SPACE])
-			*nb_print += ft_putchar(' ');
-		*nb_print += ft_putstr(str);
+	else if (final->options[SPACE] && neg == 0)
+		*nb_print += ft_putchar(' ');
+	if (neg)
+		*nb_print += ft_putchar('-');
+	*nb_print += ft_putstr(str);
 	return (1);
 }
 
-int		ft_opt_zero(t_final *final, char *str, int *nb_print)
+int		ft_opt_zero(t_final *final, char *str, int *nb_print, int neg)
 {
-	if (final->options[PLUS])
+	if (final->options[PLUS] && neg == 0)
 			*nb_print += ft_putchar('+');
-		if (final->options[SPACE])
-			*nb_print += ft_putchar(' ');
-		put_n_char('0', final->larg_min - ft_strlen(str) - 1 - *nb_print);
-		*nb_print += ft_putstr(str);
+	else if (final->options[SPACE] && neg == 0)
+		*nb_print += ft_putchar(' ');
+	put_n_char('0', final->larg_min - ft_strlen(str) - 1 - *nb_print);
+	if (neg)
+		*nb_print += ft_putchar('-');
+	*nb_print += ft_putstr(str);
 	return (1);
 }
 
@@ -78,24 +82,35 @@ int		aff_int(t_final *final, va_list av)
 	char		*str;
 	int			nb_print;
 	int			flag;
+	int			neg;
 
+	neg = 0;
 	flag = 0;
 	nb_print = 0;
 	nbr = cast_nbr(final, av);
+	if (nbr < 0)
+		neg = 1;
 	str = ft_itoa_base(nbr, 10);
-	str = str_with_precision(str, final->precision);;
+	str = str_with_precision(str + neg, final->precision);;
 	if (final->options[MINUS])
-		flag = ft_opt_minus(final, str, &nb_print);
+		flag = ft_opt_minus(final, str, &nb_print, neg);
 	if (final->options[ZERO] && final->precision == 0)
-		flag = ft_opt_zero(final, str, &nb_print);
+		flag = ft_opt_zero(final, str, &nb_print, neg);
 	else
 	{
-		nb_print += put_n_char(' ', final->larg_min - ft_strlen(str) - 1 -
-			final->options[PLUS] - final->options[SPACE]);
-		if (final->options[PLUS] && !final->options[MINUS])
-			ft_putchar('+');
+		if (final->options[MINUS])
+			nb_print += put_n_char(' ', final->larg_min - nb_print);
+		else
+			nb_print += put_n_char(' ', final->larg_min - nb_print - ft_strlen(str) - neg);
+		if (final->options[PLUS] && !final->options[MINUS] || (final->options[ZERO] && final->precision))
+		{
+			if (neg == 0)
+				nb_print += ft_putchar('+');
+			else
+				nb_print += ft_putchar('-');
+		}
 	}
 	if (flag == 0)
-		ft_putstr(str);
+		nb_print += ft_putstr(str);
 	return (nb_print);
 }
