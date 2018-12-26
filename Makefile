@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dchane <dchane@student.42.fr>              +#+  +:+       +#+         #
+#    By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/01 09:49:18 by mdchane           #+#    #+#              #
-#    Updated: 2018/12/14 15:38:43 by dchane           ###   ########.fr        #
+#    Updated: 2018/12/26 11:13:21 by mdchane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,8 @@ $(NAME): $(OBJS)
 	gcc -o $@ -c $< $(FLAGS) -I . -I libft/.
 
 test:
-	make -C libft/
 	gcc -o printf *.c -L libft/ -lft
+	./printf | cat -e
 
 clean:
 	make -C libft/ clean

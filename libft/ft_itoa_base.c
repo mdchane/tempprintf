@@ -6,11 +6,11 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 11:28:58 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/20 09:50:36 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/26 11:09:40 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libft.h"
 
 char	*ft_itoa_base(long value, int base)
 {

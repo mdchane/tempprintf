@@ -6,7 +6,7 @@
 #    By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/10 08:36:51 by mdchane           #+#    #+#              #
-#    Updated: 2018/12/18 14:14:38 by mdchane          ###   ########.fr        #
+#    Updated: 2018/12/26 11:10:33 by mdchane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,8 @@ SRCS = ft_atoi.c\
 	   ft_sqrt.c\
 	   ft_foreach.c\
 	   ft_strrev.c\
-	   ft_itoa_base.c
+	   ft_itoa_base.c\
+	   ft_putnchar.c
 
 OBJS = $(SRCS:.c=.o)
 
