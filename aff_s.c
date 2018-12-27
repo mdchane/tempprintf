@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 09:46:07 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/27 14:15:00 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/27 14:28:05 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ int	aff_str(t_final *fl, va_list av)
 {
 	char	*str;
 	int		nb_print;
+	int		len_print;
 
+	if (fl->preci)
 	nb_print = 0;
 	str = va_arg(av, char *);
 	if (fl->options[MINUS] == 1)
