@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 15:51:52 by dchane            #+#    #+#             */
-/*   Updated: 2018/12/26 14:12:17 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/27 10:52:15 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ p_func  *init_tab_func()
 	tab['d'] = aff_int;
 	tab['i'] = aff_int;
 	tab['u'] = aff_uint;
+	tab['o'] = aff_oct;
 	return (tab);
 }
 
@@ -33,7 +34,8 @@ int		print_format(va_list va, const char *format, p_func *tab, size_t *nb_print)
 	t_final	*final;
 
 	final = init_final_format();
-	i = ft_get_format(format, tab, final);
-	*nb_print += tab[final->type](final, va);
+	i = ft_get_format(format, final);
+	if (ft_strchr("%cspdiou", final->type))
+		*nb_print += tab[(int)final->type](final, va);
 	return (i);
 }

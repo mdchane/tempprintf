@@ -6,15 +6,21 @@
 #    By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/01 09:49:18 by mdchane           #+#    #+#              #
-#    Updated: 2018/12/26 11:13:21 by mdchane          ###   ########.fr        #
+#    Updated: 2018/12/27 11:55:44 by mdchane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-HEADER = .
+HEADERS = .
 
-SRCS = *.c
+SRCS = printf.c get_format.c \
+	get_type_token.c printf_format.c \
+	utils.c str_precision.c \
+	aff_c.c aff_p.c \
+	aff_di.c aff_percent.c \
+	aff_o.c aff_s.c \
+	aff_u.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -24,18 +30,20 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C libft/
-	gcc -o $(NAME) $(OBJS) -L libft/ -lft
+	cp libft/libft.a ./$(NAME)
+	ar rc $(NAME) $(OBJS)
+	ranlib $(NAME)
 
-%.o: %.c libftprintf.h
-	gcc -o $@ -c $< $(FLAGS) -I . -I libft/.
+%.o: %.c
+	gcc -o $@ -c $< -Wall -Wextra -Werror -I . -I libft/
 
 test:
-	gcc -o printf *.c -L libft/ -lft
+	gcc -o printf main.c libftprintf.a
 	./printf | cat -e
 
 clean:
 	make -C libft/ clean
-	rm -f *.o
+	rm -f $(OBJS)
 
 fclean: clean
 	make -C libft/ fclean

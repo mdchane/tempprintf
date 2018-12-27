@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:57:33 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/20 12:04:52 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/27 10:45:22 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,25 @@ int		ft_get_larg_min(t_final *final, const char *fm)
 int		ft_get_precision(t_final *final, const char *fm)
 {
 	int		i;
+	int		flag_neg;
 
+	flag_neg = 0;
 	i = 1;
 	if (fm[i] == '.')
 	{
 		i++;
+		if (fm[i] == '-')
+		{
+			flag_neg = 1;
+			i++;
+		}
 		while (ft_isdigit(fm[i]))
 		{
 			final->precision = final->precision * 10 + fm[i] - '0';
 			i++;
 		}
+		if (flag_neg)
+			final->precision = 0;
 	}
 	return (i - 1);
 }
@@ -119,7 +128,7 @@ int		ft_get_type(t_final *final, const char *fm)
 	return (i + 1);
 }
 
-int		ft_get_format(const char *format, p_func *tab, t_final *final)
+int		ft_get_format(const char *format, t_final *final)
 {
 	int		i;
 
