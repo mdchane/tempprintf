@@ -20,16 +20,16 @@ int		main()
 	char	*c = "coucou";
 	int		i = 42;
 
-	ft_printf("%1.0s\n", c);
-	ft_printf("%0.1s\n", c);
-	ft_printf("%0.2s\n", c);
-	ft_printf("%0.3s\n", c);
+	// ft_printf("%10.0s\n", c);
+	// ft_printf("%10.1s\n", c);
+	// ft_printf("%10.2s\n", c);
+	// ft_printf("%10.3s\n", c);
 
 
-	printf("%1.0s\n", c);
-	printf("%0.1s\n", c);
-	printf("%0.2s\n", c);
-	printf("%0.3s\n", c);
+	printf("%10s\n", c);
+	printf("%10.0s\n", c);
+	printf("%10.2s\n", c);
+	printf("%10.3s\n", c);
 
 
 
