@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 09:58:22 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/27 10:45:35 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/27 12:38:06 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_final
 	va_list	va;
 	int		options[NB_OPTIONS];
 	int		larg_min;
-	int		precision;
+	int		preci;
 	int		modif[NB_MODIF];
 	char	type;
 	int		nb_print;
@@ -61,7 +61,7 @@ int			ft_get_format(const char *format, t_final *final);
 
 p_func		*init_tab_func();
 int			print_format(va_list va, const char *format, p_func *tab, size_t *nb_print);
-char		*str_with_precision(char *str, int precision);
+char		*str_with_precision(char *str, int preci);
 intmax_t	cast_u(t_final *final, va_list av);
 
 

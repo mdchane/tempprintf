@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:57:33 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/27 10:45:22 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/27 12:30:50 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_print_final(t_final *final)
 {
-	printf("\n---------------\nprint_final : \nlarg_min = %d\nprecision = %d\ntype = %c\n",
-	final->larg_min, final->precision, final->type);
+	printf("\n---------------\nprint_final : \nlarg_min = %d\npreci = %d\ntype = %c\n",
+	final->larg_min, final->preci, final->type);
 	printf("options:\n-+#0s\n");
 	ft_foreach(final->options, NB_OPTIONS, ft_putnbr);
 	printf("\nmodif:\nhlL\n");
@@ -71,7 +71,7 @@ int		ft_get_larg_min(t_final *final, const char *fm)
 	return (i - 1);
 }
 
-int		ft_get_precision(t_final *final, const char *fm)
+int		ft_get_preci(t_final *final, const char *fm)
 {
 	int		i;
 	int		flag_neg;
@@ -88,11 +88,11 @@ int		ft_get_precision(t_final *final, const char *fm)
 		}
 		while (ft_isdigit(fm[i]))
 		{
-			final->precision = final->precision * 10 + fm[i] - '0';
+			final->preci = final->preci * 10 + fm[i] - '0';
 			i++;
 		}
 		if (flag_neg)
-			final->precision = 0;
+			final->preci = 0;
 	}
 	return (i - 1);
 }
@@ -135,7 +135,7 @@ int		ft_get_format(const char *format, t_final *final)
 	i = 0;
 	i += ft_get_options(final, format);
 	i += ft_get_larg_min(final, format + i);
-	i += ft_get_precision(final, format + i);
+	i += ft_get_preci(final, format + i);
 	i += ft_get_modif(final, format + i);
 	i += ft_get_type(final, format + i);
 	return (i);

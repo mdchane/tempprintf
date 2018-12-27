@@ -6,7 +6,7 @@
 #    By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/01 09:49:18 by mdchane           #+#    #+#              #
-#    Updated: 2018/12/27 11:55:44 by mdchane          ###   ########.fr        #
+#    Updated: 2018/12/27 12:39:31 by mdchane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,6 @@ clean:
 fclean: clean
 	make -C libft/ fclean
 	rm -f $(NAME)
-	rm -f test
+	rm -f printf
 
 re: fclean all

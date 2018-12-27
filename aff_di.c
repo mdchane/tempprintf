@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 09:55:16 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/26 14:06:34 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/27 12:38:06 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_opt_zero(t_final *final, char *str, int *nb_print, int neg)
 {
 	if (final->options[SPACE] && neg == 0)
 		*nb_print += ft_putchar(' ');
-	if (final->precision)
+	if (final->preci)
 	{
 		put_n_char(' ', final->larg_min - ft_strlen(str) - *nb_print - neg);
 		if (neg)
@@ -65,7 +65,7 @@ void	ft_opt_zero(t_final *final, char *str, int *nb_print, int neg)
 
 void	ft_opt_plus(t_final *final, char *str, int *nb_print, int neg)
 {
-	if (final->options[ZERO] && final->precision == 0)
+	if (final->options[ZERO] && final->preci == 0)
 	{
 		if (neg == 0)
 			*nb_print += ft_putchar('+');
@@ -96,7 +96,7 @@ int		aff_int(t_final *fl, va_list av)
 	nb_print = 0;
 	nbr = cast_d(fl, av, &neg);
 	str = ft_itoa_base(nbr, 10);
-	str = str_with_precision(str + neg, fl->precision);;
+	str = str_with_precision(str + neg, fl->preci);;
 	if (fl->options[MINUS])
 		ft_opt_minus(fl, str, &nb_print, neg);
 	else if (fl->options[PLUS])

@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 09:47:09 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/27 10:04:54 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/27 12:38:06 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		ft_opt_minus_o(t_final *final, char *str, int *nb_print)
 
 void	ft_opt_zero_o(t_final *final, char *str, int *nb_print)
 {
-	if (final->precision)
+	if (final->preci)
 	{
 		put_n_char(' ', final->larg_min - ft_strlen(str) - *nb_print);
 	}
@@ -41,7 +41,7 @@ int		aff_oct(t_final *fl, va_list av)
 	nb_print = 0;
 	nbr = cast_u(fl, av);
 	str = ft_itoa_base(nbr, 8);
-	str = str_with_precision(str, fl->precision);
+	str = str_with_precision(str, fl->preci);
 	if (fl ->options[DIESE] && nbr != 0)
 		nb_print += ft_putchar('0');
 	if (fl->options[MINUS])

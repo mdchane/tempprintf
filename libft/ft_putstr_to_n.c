@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_preci.c                                    :+:      :+:    :+:   */
+/*   ft_putstr_to_n.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/26 11:05:32 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/27 11:00:25 by mdchane          ###   ########.fr       */
+/*   Created: 2018/12/27 12:08:10 by mdchane           #+#    #+#             */
+/*   Updated: 2018/12/27 12:16:20 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libft.h"
 
-char	*str_with_precision(char *str, int preci)
+int	ft_putstr_to_n(char const *s, size_t n)
 {
-	char	*tmp;
-	size_t	i;
-
-	if ((size_t)preci > ft_strlen(str))
+	if (s == NULL)
+		return (0);
+	if (n < ft_strlen(s))
 	{
-		tmp = ft_strnew(preci + 1);
-		i = 0;
-		while (i < (size_t)preci - ft_strlen(str))
-		{
-			tmp[i] = '0';
-			i++;
-		}
-		tmp[i] = '\0';
-		ft_strcat(tmp, str);
-		return (tmp);
+		write(1, s, n);
+		return (n);
 	}
-	return (str);
+	else
+		write(1, s, ft_strlen(s));
+	return (ft_strlen(s));
 }

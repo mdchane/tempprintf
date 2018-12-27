@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/10 12:45:07 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/26 11:07:50 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/27 12:14:12 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ char				*ft_itoa_base(long nbr, int base);
 int					ft_putchar(char c);
 int					put_n_char(char c, int n);
 int					ft_putstr(char const *s);
+int					ft_putstr_to_n(char const *s, size_t n);
 void				ft_putendl(char const *s);
 void				ft_putnbr(int n);
 int					ft_putchar_fd(char c, int fd);

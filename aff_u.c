@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 13:52:49 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/26 14:13:38 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/27 12:38:06 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		ft_opt_minus_u(t_final *final, char *str, int *nb_print)
 
 void	ft_opt_zero_u(t_final *final, char *str, int *nb_print)
 {
-	if (final->precision)
+	if (final->preci)
 	{
 		put_n_char(' ', final->larg_min - ft_strlen(str) - *nb_print);
 	}
@@ -58,7 +58,7 @@ int		aff_uint(t_final *fl, va_list av)
 	nb_print = 0;
 	nbr = cast_u(fl, av);
 	str = ft_itoa_base(nbr, 10);
-	str = str_with_precision(str, fl->precision);;
+	str = str_with_precision(str, fl->preci);;
 	if (fl->options[MINUS])
 		ft_opt_minus_u(fl, str, &nb_print);
 	else if (fl->options[ZERO])
