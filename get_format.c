@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:57:33 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/27 12:30:50 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/31 11:33:57 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,25 +74,18 @@ int		ft_get_larg_min(t_final *final, const char *fm)
 int		ft_get_preci(t_final *final, const char *fm)
 {
 	int		i;
-	int		flag_neg;
 
-	flag_neg = 0;
+	final->preci = -1;
 	i = 1;
 	if (fm[i] == '.')
 	{
 		i++;
-		if (fm[i] == '-')
-		{
-			flag_neg = 1;
-			i++;
-		}
+		final->preci = 0;
 		while (ft_isdigit(fm[i]))
 		{
 			final->preci = final->preci * 10 + fm[i] - '0';
 			i++;
 		}
-		if (flag_neg)
-			final->preci = 0;
 	}
 	return (i - 1);
 }

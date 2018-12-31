@@ -6,7 +6,7 @@
 #    By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/01 09:49:18 by mdchane           #+#    #+#              #
-#    Updated: 2018/12/27 12:39:31 by mdchane          ###   ########.fr        #
+#    Updated: 2018/12/31 09:55:36 by mdchane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ HEADERS = .
 
 SRCS = printf.c get_format.c \
 	get_type_token.c printf_format.c \
-	utils.c str_precision.c \
+	utils.c int_precision.c \
 	aff_c.c aff_p.c \
 	aff_di.c aff_percent.c \
 	aff_o.c aff_s.c \

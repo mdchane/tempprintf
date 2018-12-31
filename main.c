@@ -18,112 +18,117 @@ int		main()
 {
 	setlocale(LC_ALL, "");
 	char	*c = "coucou";
-	int		i = 42;
+	int		i = 0;
 
-	// ft_printf("%10.0s\n", c);
-	// ft_printf("%10.1s\n", c);
-	// ft_printf("%10.2s\n", c);
-	// ft_printf("%10.3s\n", c);
+	// ft_printf("@moulitest: |%.o| |%.0o|\n", 0, 0);
+	// ft_printf("@moulitest: |%5.o| |%5.0o|\n", 0, 0);
+	// printf("@moulitest: |%.o| |%.0o|\n", 0, 0);
+	// printf("@moulitest: |%5.o| |%5.0o|\n", 0, 0);
 
-
-	printf("%10s\n", c);
-	printf("%10.0s\n", c);
-	printf("%10.2s\n", c);
-	printf("%10.3s\n", c);
-
+	// printf("nb print %5o\n", ft_printf("%s\n", NULL));
+	// ft_printf("%s\n", NULL);
+	// ft_printf("%s\n", NULL);
+	// ft_printf("%s\n", NULL);
 
 
-	// ft_printf("my ft_printf  \n");
-	// ft_printf("MINUS:\n");
-	// ft_printf("%-o\n", i);
-	// ft_printf("%-+o\n", i);
-	// ft_printf("%-#o\n", i);
-	// ft_printf("%- o\n", i);
-	// ft_printf("%- +o\n", i);
-	// ft_printf("%--o\n", i);
-	// ft_printf("----------------------------------------\n");
+	// printf("nb print %5o\n", printf("%s\n", NULL));
+	// printf("%s\n", NULL);
+	// printf("%s\n", NULL);
+	// printf("%s\n", NULL);
 
 
 
-	// ft_printf("my ft_printf  \n");
-	// ft_printf("PLUS:\n");
-	// ft_printf("%+o\n", i);
-	// ft_printf("%+-o\n", i);
-	// ft_printf("%+#o\n", i);
-	// ft_printf("%+0o\n", i);
-	// ft_printf("%+ o\n", i);
-	// ft_printf("%++o\n", i);
-	// ft_printf("%+-0 o\n", i);
-	// ft_printf("----------------------------------------\n");
-
-	// ft_printf("my ft_printf  \n");
-	// ft_printf("ZERO:\n");
-	// ft_printf("%0+o\n", i);
-	// ft_printf("%0-o\n", i);
-	// ft_printf("%0#o\n", i);
-	// ft_printf("%00o\n", i);
-	// ft_printf("%0 o\n", i);
-	// ft_printf("%0 -o\n", i);
-	// ft_printf("----------------------------------------\n");
-
-	// ft_printf("my ft_printf  \n");
-	// ft_printf("SPACE:\n");
-	// ft_printf("% +o\n", i);
-	// ft_printf("% -o\n", i);
-	// ft_printf("% #o\n", i);
-	// ft_printf("% 0o\n", i);
-	// ft_printf("%  o\n", i);
-	// ft_printf("%  -o\n", i);
-	// ft_printf("----------------------------------------\n");
-	// ft_printf("----------------------------------------\n");
-
-	// printf("real printf :\n");
-	// printf("MINUS:\n");
-	// printf("%-o\n", i);
-	// printf("%-+o\n", i);
-	// printf("%-#o\n", i);
-	// printf("%- o\n", i);
-	// printf("%- +o\n", i);
-	// printf("%--o\n", i);
-	// printf("----------------------------------------\n");
-
-	// printf("real printf :\n");
-	// printf("PLUS:\n");
-	// printf("%+o\n", i);
-	// printf("%+-o\n", i);
-	// printf("%+#o\n", i);
-	// printf("%+0o\n", i);
-	// printf("%+ o\n", i);
-	// printf("%++o\n", i);
-	// printf("%+-0 o\n", i);
-	// printf("----------------------------------------\n");
+	ft_printf("my ft_printf  \n");
+	ft_printf("MINUS:\n");
+	ft_printf("%-5o\n", i);
+	ft_printf("%-+5o\n", i);
+	ft_printf("%-#5o\n", i);
+	ft_printf("%- 5o\n", i);
+	ft_printf("%- +5o\n", i);
+	ft_printf("%--5o\n", i);
+	ft_printf("----------------------------------------\n");
 
 
-	// printf("real printf :\n");
-	// printf("ZERO:\n");
-	// printf("%0+o\n", i);
-	// printf("%0-o\n", i);
-	// printf("%0#o\n", i);
-	// printf("%00o\n", i);
-	// printf("%0 o\n", i);
-	// printf("%0 -o\n", i);
-	// printf("----------------------------------------\n");
+
+	ft_printf("my ft_printf  \n");
+	ft_printf("PLUS:\n");
+	ft_printf("%+5o\n", i);
+	ft_printf("%+-5o\n", i);
+	ft_printf("%+#5o\n", i);
+	ft_printf("%+05o\n", i);
+	ft_printf("%+ 5o\n", i);
+	ft_printf("%++5o\n", i);
+	ft_printf("%+-0 5o\n", i);
+	ft_printf("----------------------------------------\n");
+
+	ft_printf("my ft_printf  \n");
+	ft_printf("ZERO:\n");
+	ft_printf("%0+5o\n", i);
+	ft_printf("%0-5o\n", i);
+	ft_printf("%0#5o\n", i);
+	ft_printf("%005o\n", i);
+	ft_printf("%0 5o\n", i);
+	ft_printf("%0 -5o\n", i);
+	ft_printf("----------------------------------------\n");
+
+	ft_printf("my ft_printf  \n");
+	ft_printf("SPACE:\n");
+	ft_printf("% +5o\n", i);
+	ft_printf("% -5o\n", i);
+	ft_printf("% #5o\n", i);
+	ft_printf("% 05o\n", i);
+	ft_printf("%  5o\n", i);
+	ft_printf("%  -5o\n", i);
+	ft_printf("----------------------------------------\n");
+	ft_printf("----------------------------------------\n");
+
+	printf("real printf :\n");
+	printf("MINUS:\n");
+	printf("%-5o\n", i);
+	printf("%-+5o\n", i);
+	printf("%-#5o\n", i);
+	printf("%- 5o\n", i);
+	printf("%- +5o\n", i);
+	printf("%--5o\n", i);
+	printf("----------------------------------------\n");
+
+	printf("real printf :\n");
+	printf("PLUS:\n");
+	printf("%+5o\n", i);
+	printf("%+-5o\n", i);
+	printf("%+#5o\n", i);
+	printf("%+05o\n", i);
+	printf("%+ 5o\n", i);
+	printf("%++5o\n", i);
+	printf("%+-0 5o\n", i);
+	printf("----------------------------------------\n");
 
 
-	// printf("SPACE:\n");
-	// printf("% +o\n", i);
-	// printf("% -o\n", i);
-	// printf("% #o\n", i);
-	// printf("% 0o\n", i);
-	// printf("%  o\n", i);
-	// printf("%  -o\n", i);
-	// printf("%o\n", i);
-	// printf("%-+o\n", i);
-	// printf("% 0o\n", i);
-	// printf("%+0o\n", i);
-	// printf("%--o\n", i);
-	// printf("%-0o\n", i);
-	// printf("% +o\n", i);
+	printf("real printf :\n");
+	printf("ZERO:\n");
+	printf("%0+5o\n", i);
+	printf("%0-5o\n", i);
+	printf("%0#5o\n", i);
+	printf("%005o\n", i);
+	printf("%0 5o\n", i);
+	printf("%0 -5o\n", i);
+	printf("----------------------------------------\n");
+
+
+	printf("SPACE:\n");
+	printf("% +5o\n", i);
+	printf("% -5o\n", i);
+	printf("% #5o\n", i);
+	printf("% 05o\n", i);
+	printf("%  5o\n", i);
+	printf("%  -5o\n", i);
+	// printf("%s\n", NULL);
+	// printf("%-+5o\n", i);
+	// printf("% 05o\n", i);
+	// printf("%+05o\n", i);
+	// printf("%--5o\n", i);
+	// printf("%-05o\n", i);
+	// printf("% +5o\n", i);
 
 
 

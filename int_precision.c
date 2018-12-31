@@ -12,12 +12,12 @@
 
 #include "libftprintf.h"
 
-char	*str_with_precision(char *str, int preci)
+char	*int_with_precision(char *str, int preci)
 {
 	char	*tmp;
 	size_t	i;
 
-	if ((size_t)preci > ft_strlen(str))
+	if ((size_t)preci > ft_strlen(str) && preci > -1)
 	{
 		tmp = ft_strnew(preci + 1);
 		i = 0;

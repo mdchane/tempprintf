@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 09:55:16 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/27 12:38:06 by mdchane          ###   ########.fr       */
+/*   Updated: 2018/12/31 12:11:02 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ void	ft_opt_zero(t_final *final, char *str, int *nb_print, int neg)
 {
 	if (final->options[SPACE] && neg == 0)
 		*nb_print += ft_putchar(' ');
-	if (final->preci)
+	if (final->preci >= 0)
 	{
-		put_n_char(' ', final->larg_min - ft_strlen(str) - *nb_print - neg);
+		*nb_print += put_n_char(' ', final->larg_min - ft_strlen(str) - *nb_print - neg);
 		if (neg)
 			*nb_print += ft_putchar('-');
 	}
@@ -58,14 +58,14 @@ void	ft_opt_zero(t_final *final, char *str, int *nb_print, int neg)
 	{
 		if (neg)
 			*nb_print += ft_putchar('-');
-		put_n_char('0', final->larg_min - ft_strlen(str) - *nb_print);
+		*nb_print += put_n_char('0', final->larg_min - ft_strlen(str) - *nb_print);
 	}
 	*nb_print += ft_putstr(str);
 }
 
 void	ft_opt_plus(t_final *final, char *str, int *nb_print, int neg)
 {
-	if (final->options[ZERO] && final->preci == 0)
+	if (final->options[ZERO] && final->preci < 0)
 	{
 		if (neg == 0)
 			*nb_print += ft_putchar('+');
@@ -94,9 +94,13 @@ int		aff_int(t_final *fl, va_list av)
 	int			neg;
 
 	nb_print = 0;
-	nbr = cast_d(fl, av, &neg);
+	if ((nbr = cast_d(fl, av, &neg)) == -9223372036854775807 - 1)
+	{
+		write(1, "-9223372036854775808", 20);
+		return (20);
+	}
 	str = ft_itoa_base(nbr, 10);
-	str = str_with_precision(str + neg, fl->preci);;
+	str = int_with_precision(str + neg, fl->preci);;
 	if (fl->options[MINUS])
 		ft_opt_minus(fl, str, &nb_print, neg);
 	else if (fl->options[PLUS])
@@ -105,7 +109,7 @@ int		aff_int(t_final *fl, va_list av)
 		ft_opt_zero(fl, str, &nb_print, neg);
 	else
 	{
-		if (fl->options[SPACE])
+		if (fl->options[SPACE] && neg == 0)
 			nb_print += ft_putchar(' ');
 		nb_print += put_n_char(' ', fl->larg_min - ft_strlen(str) - neg - nb_print);
 		if (neg)
