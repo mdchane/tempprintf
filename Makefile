@@ -6,7 +6,7 @@
 #    By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/01 09:49:18 by mdchane           #+#    #+#              #
-#    Updated: 2019/01/02 10:39:22 by mdchane          ###   ########.fr        #
+#    Updated: 2019/01/02 13:52:16 by mdchane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = libftprintf.a
 HEADERS = .
 
 SRCS = printf.c get_format.c \
-	get_type_token.c printf_format.c \
+	printf_format.c \
 	utils.c int_precision.c \
 	aff_c.c aff_p.c \
 	aff_di.c aff_percent.c \

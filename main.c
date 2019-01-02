@@ -37,90 +37,91 @@ int		main()
 	// printf("%s\n", NULL);
 
 
-	ft_printf("my ft_printf  \n");
-	ft_printf("MINUS:\n");
-	ft_printf("%-30p\n", i);
-	ft_printf("%-+30p\n", i);
-	ft_printf("%-#30p\n", i);
-	ft_printf("%- 30p\n", i);
-	ft_printf("%- +30p\n", i);
-	ft_printf("%--30p\n", i);
-	ft_printf("----------------------------------------\n");
+
+	// ft_printf("my ft_printf  \n");
+	// ft_printf("MINUS:\n");
+	// ft_printf("%-30p\n", i);
+	// ft_printf("%-+30p\n", i);
+	// ft_printf("%-#30p\n", i);
+	// ft_printf("%- 30p\n", i);
+	// ft_printf("%- +30p\n", i);
+	// ft_printf("%--30p\n", i);
+	// ft_printf("----------------------------------------\n");
+
+	ft_printf("salut %c\n", 't');
+
+	// ft_printf("my ft_printf  \n");
+	// ft_printf("PLUS:\n");
+	// ft_printf("%+30p\n", i);
+	// ft_printf("%+-30p\n", i);
+	// ft_printf("%+#30p\n", i);
+	// ft_printf("%+030p\n", i);
+	// ft_printf("%+ 30p\n", i);
+	// ft_printf("%++30p\n", i);
+	// ft_printf("%+-0 30p\n", i);
+	// ft_printf("----------------------------------------\n");
+
+	// ft_printf("my ft_printf  \n");
+	// ft_printf("ZERO:\n");
+	// ft_printf("%0+30p\n", i);
+	// ft_printf("%0-30p\n", i);
+	// ft_printf("%0#30p\n", i);
+	// ft_printf("%0030p\n", i);
+	// ft_printf("%0 30p\n", i);
+	// ft_printf("%0 -30p\n", i);
+	// ft_printf("----------------------------------------\n");
+
+	// ft_printf("my ft_printf  \n");
+	// ft_printf("SPACE:\n");
+	// ft_printf("% +30p\n", i);
+	// ft_printf("% -30p\n", i);
+	// ft_printf("% #30p\n", i);
+	// ft_printf("% 030p\n", i);
+	// ft_printf("%  30p\n", i);
+	// ft_printf("%  -30p\n", i);
+	// ft_printf("----------------------------------------\n");
+	// ft_printf("----------------------------------------\n");
+
+	// printf("real printf :\n");
+	// printf("MINUS:\n");
+	// printf("%-30p\n", i);
+	// printf("%-+30p\n", i);
+	// printf("%-#30p\n", i);
+	// printf("%- 30p\n", i);
+	// printf("%- +30p\n", i);
+	// printf("%--30p\n", i);
+	// printf("----------------------------------------\n");
+
+	// printf("real printf :\n");
+	// printf("PLUS:\n");
+	// printf("%+30p\n", i);
+	// printf("%+-30p\n", i);
+	// printf("%+#30p\n", i);
+	// printf("%+030p\n", i);
+	// printf("%+ 30p\n", i);
+	// printf("%++30p\n", i);
+	// printf("%+-0 30p\n", i);
+	// printf("----------------------------------------\n");
 
 
-
-	ft_printf("my ft_printf  \n");
-	ft_printf("PLUS:\n");
-	ft_printf("%+30p\n", i);
-	ft_printf("%+-30p\n", i);
-	ft_printf("%+#30p\n", i);
-	ft_printf("%+030p\n", i);
-	ft_printf("%+ 30p\n", i);
-	ft_printf("%++30p\n", i);
-	ft_printf("%+-0 30p\n", i);
-	ft_printf("----------------------------------------\n");
-
-	ft_printf("my ft_printf  \n");
-	ft_printf("ZERO:\n");
-	ft_printf("%0+30p\n", i);
-	ft_printf("%0-30p\n", i);
-	ft_printf("%0#30p\n", i);
-	ft_printf("%0030p\n", i);
-	ft_printf("%0 30p\n", i);
-	ft_printf("%0 -30p\n", i);
-	ft_printf("----------------------------------------\n");
-
-	ft_printf("my ft_printf  \n");
-	ft_printf("SPACE:\n");
-	ft_printf("% +30p\n", i);
-	ft_printf("% -30p\n", i);
-	ft_printf("% #30p\n", i);
-	ft_printf("% 030p\n", i);
-	ft_printf("%  30p\n", i);
-	ft_printf("%  -30p\n", i);
-	ft_printf("----------------------------------------\n");
-	ft_printf("----------------------------------------\n");
-
-	printf("real printf :\n");
-	printf("MINUS:\n");
-	printf("%-30p\n", i);
-	printf("%-+30p\n", i);
-	printf("%-#30p\n", i);
-	printf("%- 30p\n", i);
-	printf("%- +30p\n", i);
-	printf("%--30p\n", i);
-	printf("----------------------------------------\n");
-
-	printf("real printf :\n");
-	printf("PLUS:\n");
-	printf("%+30p\n", i);
-	printf("%+-30p\n", i);
-	printf("%+#30p\n", i);
-	printf("%+030p\n", i);
-	printf("%+ 30p\n", i);
-	printf("%++30p\n", i);
-	printf("%+-0 30p\n", i);
-	printf("----------------------------------------\n");
+	// printf("real printf :\n");
+	// printf("ZERO:\n");
+	// printf("%0+30p\n", i);
+	// printf("%0-30p\n", i);
+	// printf("%0#30p\n", i);
+	// printf("%0030p\n", i);
+	// printf("%0 30p\n", i);
+	// printf("%0 -30p\n", i);
+	// printf("----------------------------------------\n");
 
 
-	printf("real printf :\n");
-	printf("ZERO:\n");
-	printf("%0+30p\n", i);
-	printf("%0-30p\n", i);
-	printf("%0#30p\n", i);
-	printf("%0030p\n", i);
-	printf("%0 30p\n", i);
-	printf("%0 -30p\n", i);
-	printf("----------------------------------------\n");
-
-
-	printf("SPACE:\n");
-	printf("% +30p\n", i);
-	printf("% -30p\n", i);
-	printf("% #30p\n", i);
-	printf("% 030p\n", i);
-	printf("%  30p\n", i);
-	printf("%  -30p\n", i);
+	// printf("SPACE:\n");
+	// printf("% +30p\n", i);
+	// printf("% -30p\n", i);
+	// printf("% #30p\n", i);
+	// printf("% 030p\n", i);
+	// printf("%  30p\n", i);
+	// printf("%  -30p\n", i);
 	// printf("%s\n", NULL);
 	// printf("%-+30p\n", i);
 	// printf("% 030p\n", i);

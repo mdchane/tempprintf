@@ -1,3 +1,13 @@
+
+
+
+
+
+
+
+
+
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -6,7 +16,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 15:51:52 by dchane            #+#    #+#             */
-/*   Updated: 2019/01/02 11:00:49 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/02 13:48:36 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +26,8 @@ p_func  *init_tab_func()
 {
 	p_func	*tab;
 
-	tab = (p_func *)malloc(sizeof(p_func) * 128);
-	//ft_bzero(tab, sizeof(p_func) * 128);
+	if (!(tab = (p_func *)malloc(sizeof(p_func) * 128)))
+		return (NULL);
 	tab['%'] = aff_percent;
 	tab['c'] = aff_char;
 	tab['s'] = aff_str;
