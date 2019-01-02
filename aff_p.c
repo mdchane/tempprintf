@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 11:27:09 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/20 12:17:06 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/02 11:28:42 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	aff_ptr(t_final *final, va_list av)
 
 	nb_print = 0;
 	adr = (unsigned long)va_arg(av, unsigned long);
-	str = ft_itoa_base(adr, 16);
+	str = ft_itoa_base_u(adr, 16);
 	if (final->options[MINUS] == 1)
 	{
 		nb_print += ft_putstr("0x");

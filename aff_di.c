@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 09:55:16 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/31 12:11:02 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/02 11:24:08 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ intmax_t	cast_d(t_final *final, va_list av, int *neg)
 	return (nbr);
 }
 
-void	ft_opt_minus(t_final *final, char *str, int *nb_print, int neg)
+static void	ft_opt_minus(t_final *final, char *str, int *nb_print, int neg)
 {
 	if (final->options[PLUS] && neg == 0)
 			*nb_print += ft_putchar('+');
@@ -44,7 +44,7 @@ void	ft_opt_minus(t_final *final, char *str, int *nb_print, int neg)
 	*nb_print += put_n_char(' ', final->larg_min - *nb_print);
 }
 
-void	ft_opt_zero(t_final *final, char *str, int *nb_print, int neg)
+static void	ft_opt_zero(t_final *final, char *str, int *nb_print, int neg)
 {
 	if (final->options[SPACE] && neg == 0)
 		*nb_print += ft_putchar(' ');
@@ -63,7 +63,7 @@ void	ft_opt_zero(t_final *final, char *str, int *nb_print, int neg)
 	*nb_print += ft_putstr(str);
 }
 
-void	ft_opt_plus(t_final *final, char *str, int *nb_print, int neg)
+static void	ft_opt_plus(t_final *final, char *str, int *nb_print, int neg)
 {
 	if (final->options[ZERO] && final->preci < 0)
 	{
@@ -84,8 +84,15 @@ void	ft_opt_plus(t_final *final, char *str, int *nb_print, int neg)
 	*nb_print += ft_putstr(str);
 }
 
-
-
+static void ft_opt_others(t_final *fl, char *str, int *nb_print, int neg)
+{
+	if (fl->options[SPACE] && neg == 0)
+			*nb_print += ft_putchar(' ');
+	*nb_print += put_n_char(' ', fl->larg_min - ft_strlen(str) - neg - *nb_print);
+	if (neg)
+		*nb_print += ft_putchar('-');
+	*nb_print += ft_putstr(str);
+}
 int		aff_int(t_final *fl, va_list av)
 {
 	intmax_t	nbr;
@@ -95,11 +102,10 @@ int		aff_int(t_final *fl, va_list av)
 
 	nb_print = 0;
 	if ((nbr = cast_d(fl, av, &neg)) == -9223372036854775807 - 1)
-	{
-		write(1, "-9223372036854775808", 20);
-		return (20);
-	}
+		return (write(1, "-9223372036854775808", 20));
 	str = ft_itoa_base(nbr, 10);
+	if (ft_strcmp(str, "0") == 0 && fl->preci == 0)
+		str = NULL;
 	str = int_with_precision(str + neg, fl->preci);;
 	if (fl->options[MINUS])
 		ft_opt_minus(fl, str, &nb_print, neg);
@@ -108,13 +114,6 @@ int		aff_int(t_final *fl, va_list av)
 	else if (fl->options[ZERO] && !(fl->options[PLUS]))
 		ft_opt_zero(fl, str, &nb_print, neg);
 	else
-	{
-		if (fl->options[SPACE] && neg == 0)
-			nb_print += ft_putchar(' ');
-		nb_print += put_n_char(' ', fl->larg_min - ft_strlen(str) - neg - nb_print);
-		if (neg)
-			nb_print += ft_putchar('-');
-		nb_print += ft_putstr(str);
-	}
+		ft_opt_others(fl, str, &nb_print, neg);
 	return (nb_print);
 }

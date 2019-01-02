@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/10 12:45:07 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/27 12:14:12 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/02 11:57:35 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,11 @@ char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
 void				ft_strrev(char *str);
+void				ft_strupper(char *s);
 
 char				*ft_itoa(int n);
-char				*ft_itoa_base(long nbr, int base);
+char				*ft_itoa_base(long value, int base);
+char				*ft_itoa_base_u(unsigned long value, int base);
 
 int					ft_putchar(char c);
 int					put_n_char(char c, int n);

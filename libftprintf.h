@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 09:58:22 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/31 09:54:43 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/02 10:37:59 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int			aff_ptr(t_final *final, va_list av);
 int			aff_int(t_final *final, va_list av);
 int			aff_uint(t_final *fl, va_list av);
 int			aff_oct(t_final *fl, va_list av);
+int			aff_deci(t_final *fl, va_list av);
 
 
 #endif

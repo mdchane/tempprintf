@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/10 12:35:25 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/20 11:35:02 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/02 10:32:55 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ int	ft_putstr(char const *s)
 {
 	if (s == NULL)
 		return (0);
-	write(1, s, ft_strlen(s));
-	return (ft_strlen(s));
+	return (write(1, s, ft_strlen(s)));
+
 }
