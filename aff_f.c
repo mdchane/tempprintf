@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   aff_f.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/02 15:55:46 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/02 16:56:27 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/06 16:39:32 by dchane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,41 @@ char	*ft_ftoa(double n)
 	return (flt);
 }
 
-int		main()
+char	*ft_ftoa_base(long double value, int base)
 {
-	double	f;
-	long int	d;
+	char	*s;
+	long double	n;
+	int		sign;
+	int		i;
 
-	f = 123.456;
-	d = (long)f;
-	printf("%f\n", f);
-	printf("%ld\n", d);
-	printf("%s\n", ft_ftoa(f));
+	n = (value < 0) ? -(long double)value : value;
+	sign = (value < 0 && base == 10) ? -1 : 0;
+	i = (sign == -1) ? 2 : 1;
+	while ((n /= base) >= 1)
+		i++;
+	if (!(s = (char*)malloc(sizeof(char) * (i + 1))))
+		return (NULL);
+	s[i] = '\0';
+	n = (value < 0) ? -(long)value : value;
+	while (i-- + sign)
+	{
+		s[i] = (n % base < 10) ? n % base + '0' : n % base + 'a' - 10;
+		n /= base;
+	}
+	(i == 0) ? s[i] = '-' : 0;
+	return (s);
+}
+
+int		aff_float(t_final *fl, va_list va)
+{
+	long double nbr;
+	char	*rest;
+	int		nb_print;
+
+	nb_print = 0;
+	(void)fl;
+	nbr = (long double)(va_arg(va, long double));
+	rest = ft_ftoa(nbr);
+	ft_putstr(rest);
+	return (nb_print);
 }

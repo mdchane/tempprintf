@@ -1,22 +1,12 @@
-
-
-
-
-
-
-
-
-
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   printf_format.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 15:51:52 by dchane            #+#    #+#             */
-/*   Updated: 2019/01/02 13:48:36 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/06 16:06:32 by dchane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +28,7 @@ p_func  *init_tab_func()
 	tab['o'] = aff_oct;
 	tab['x'] = aff_deci;
 	tab['X'] = aff_deci;
+	tab['f'] = aff_float;
 	return (tab);
 }
 
@@ -48,7 +39,7 @@ int		print_format(va_list va, const char *format, p_func *tab, size_t *nb_print)
 
 	final = init_final_format();
 	i = ft_get_format(format, final);
-	if (ft_strchr("%cspdiouxX", final->type))
+	if (ft_strchr("%cspdiouxXf", final->type))
 		*nb_print += tab[(int)final->type](final, va);
 	return (i);
 }

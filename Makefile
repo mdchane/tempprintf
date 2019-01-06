@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+         #
+#    By: dchane <dchane@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/01 09:49:18 by mdchane           #+#    #+#              #
-#    Updated: 2019/01/02 13:52:16 by mdchane          ###   ########.fr        #
+#    Updated: 2019/01/06 16:07:06 by dchane           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRCS = printf.c get_format.c \
 	aff_c.c aff_p.c \
 	aff_di.c aff_percent.c \
 	aff_o.c aff_s.c \
-	aff_u.c aff_x.c
+	aff_u.c aff_x.c \
+	aff_f.c
 
 OBJS = $(SRCS:.c=.o)
 

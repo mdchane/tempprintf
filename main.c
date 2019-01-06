@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include "libftprintf.h"
 #include <locale.h>
+#include <float.h>
 
 int		main()
 {
@@ -48,7 +49,17 @@ int		main()
 	// ft_printf("%--30p\n", i);
 	// ft_printf("----------------------------------------\n");
 
-	ft_printf("salut %c\n", 't');
+	ft_printf("salut %f\n\n", FLT_MAX);
+	ft_printf("salut %lf\n\n", DBL_MAX);
+	ft_printf("salut %Lf\n\n", LDBL_MAX);
+
+	printf("real \n");
+	printf("salut %f\n\n", FLT_MAX);
+	printf("salut %lf\n\n", DBL_MAX);
+	printf("salut %Lf\n", LDBL_MAX);
+
+
+	
 
 	// ft_printf("my ft_printf  \n");
 	// ft_printf("PLUS:\n");
