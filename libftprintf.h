@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 09:58:22 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/06 16:05:09 by dchane           ###   ########.fr       */
+/*   Updated: 2019/01/07 12:05:14 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int			aff_ptr(t_final *final, va_list av);
 int			aff_int(t_final *final, va_list av);
 int			aff_uint(t_final *fl, va_list av);
 int			aff_oct(t_final *fl, va_list av);
-int			aff_deci(t_final *fl, va_list av);
+int			aff_hexa(t_final *fl, va_list av);
 int			aff_float(t_final *fl, va_list va);
 
 

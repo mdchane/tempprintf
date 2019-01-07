@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 12:27:25 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/02 14:01:19 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/07 12:13:19 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@ int		ft_printf(const char *format, ...)
 	i = 0;
 	while (format[i])
 	{
+		nb_print += ft_putstr_to_c(format + i, &i, '%');
 		if (format[i] == '%')
-			i += print_format(av, format + i + 1, tab, &nb_print);
-		else
-			nb_print += ft_putchar(format[i]);
-		i++;
+			i += print_format(av, format + i + 1, tab, &nb_print) + 1;
+		// else
+		// 	nb_print += ft_putchar(format[i]);
+		// i++;
 	}
 	va_end(av);
+	free(tab);
 	return (nb_print);
 }

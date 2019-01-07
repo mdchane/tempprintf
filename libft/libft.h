@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/10 12:45:07 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/02 11:57:35 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/07 10:46:16 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <sys/uio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 
 typedef struct		s_list
 {
@@ -76,11 +77,13 @@ void				ft_strupper(char *s);
 char				*ft_itoa(int n);
 char				*ft_itoa_base(long value, int base);
 char				*ft_itoa_base_u(unsigned long value, int base);
+char				*ft_ftoa(double val, int precision);
 
 int					ft_putchar(char c);
 int					put_n_char(char c, int n);
 int					ft_putstr(char const *s);
 int					ft_putstr_to_n(char const *s, size_t n);
+int					ft_putstr_to_c(char const *s, size_t *begin, char c);
 void				ft_putendl(char const *s);
 void				ft_putnbr(int n);
 int					ft_putchar_fd(char c, int fd);

@@ -3,109 +3,100 @@
 /*                                                        :::      ::::::::   */
 /*   aff_f.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/02 15:55:46 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/06 16:39:32 by dchane           ###   ########.fr       */
+/*   Updated: 2019/01/07 10:29:19 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <float.h>
-// long double cast_f(t_final *fl, va_list av)
-// {
-// 	if ()
-// }
 
-void	create_string(double nb, char *rest, int i)
+static void	ft_opt_minus(t_final *final, char *str, int *nb_print, int neg)
 {
-	int		afterdots;
-	int		dot;
-
-	dot = 0;
-	afterdots = 0;
-	if (nb < 1)
-	{
-		rest[i++] = '.';
-		dot = i;
-		while (afterdots < 6)
-		{
-			nb *= 10;
-			if (((int)(nb + 0.000001)) != 10)
-				rest[i++] = (int)(nb + 48 + 0.000001);
-			nb -= (int)nb;
-			afterdots++;
-		}
-	}
-	while (i - dot < 6)
-		rest[i++] = '0';
-	rest[i] = '\0';
+	if (final->options[PLUS] && neg == 0)
+			*nb_print += ft_putchar('+');
+	else if (final->options[SPACE] && neg == 0)
+		*nb_print += ft_putchar(' ');
+	if (neg)
+		*nb_print += ft_putchar('-');
+	*nb_print += ft_putstr(str + neg);
+	*nb_print += put_n_char(' ', final->larg_min - *nb_print);
 }
 
-char	*ft_ftoa(double n)
+static void	ft_opt_zero(t_final *final, char *str, int *nb_print, int neg)
 {
-	char		*flt;
-	char		*first;
-	long int	nb;
-	int			i;
-
-	i = -1;
-	printf("n = %f\n", n);
-	nb = (long int)n;
-	printf("nb = %ld\n", nb);
-	first = ft_itoa_base(nb, 10);
-	printf("first = %s\n", first);
-	flt = (char *)malloc(100);
-	printf("flt = %s\n", flt);
-	n -= (double)nb;
-	printf("n = %f\n", n);
-	if (n < 0)
-		n *= -1;
-	printf("n = %f\n", n);
-	while (first[++i])
-		flt[i] = first[i];
-	printf("flt = %s\n", flt);
-	create_string(n, flt, i);
-	printf("flt = %s\n", flt);
-	free(first);
-	return (flt);
+	if (final->options[SPACE] && neg == 0)
+		*nb_print += ft_putchar(' ');
+	if (final->preci >= 0)
+	{
+		*nb_print += put_n_char(' ', final->larg_min - ft_strlen(str) - *nb_print - neg);
+		if (neg)
+			*nb_print += ft_putchar('-');
+	}
+	else
+	{
+		if (neg)
+			*nb_print += ft_putchar('-');
+		*nb_print += put_n_char('0', final->larg_min - ft_strlen(str) + neg - *nb_print);
+	}
+	*nb_print += ft_putstr(str + neg);
 }
 
-char	*ft_ftoa_base(long double value, int base)
+static void	ft_opt_plus(t_final *final, char *str, int *nb_print, int neg)
 {
-	char	*s;
-	long double	n;
-	int		sign;
-	int		i;
-
-	n = (value < 0) ? -(long double)value : value;
-	sign = (value < 0 && base == 10) ? -1 : 0;
-	i = (sign == -1) ? 2 : 1;
-	while ((n /= base) >= 1)
-		i++;
-	if (!(s = (char*)malloc(sizeof(char) * (i + 1))))
-		return (NULL);
-	s[i] = '\0';
-	n = (value < 0) ? -(long)value : value;
-	while (i-- + sign)
+	if (final->options[ZERO] && final->preci < 0)
 	{
-		s[i] = (n % base < 10) ? n % base + '0' : n % base + 'a' - 10;
-		n /= base;
+		if (neg == 0)
+			*nb_print += ft_putchar('+');
+		else
+			*nb_print += ft_putchar('-');
+		*nb_print += put_n_char('0', final->larg_min - ft_strlen(str) + neg - 1);
 	}
-	(i == 0) ? s[i] = '-' : 0;
-	return (s);
+	else
+	{
+		*nb_print += put_n_char(' ', final->larg_min - ft_strlen(str) + neg - 1);
+		if (neg == 0)
+			*nb_print += ft_putchar('+');
+		else
+			*nb_print += ft_putchar('-');
+	}
+	*nb_print += ft_putstr(str + neg);
+}
+
+static void ft_opt_others(t_final *fl, char *str, int *nb_print, int neg)
+{
+	if (fl->options[SPACE] && neg == 0)
+			*nb_print += ft_putchar(' ');
+	*nb_print += put_n_char(' ', fl->larg_min - ft_strlen(str) - *nb_print);
+	if (neg)
+		*nb_print += ft_putchar('-');
+	*nb_print += ft_putstr(str + neg);
 }
 
 int		aff_float(t_final *fl, va_list va)
 {
 	long double nbr;
-	char	*rest;
+	char	*str;
 	int		nb_print;
+	int			neg;
 
+	neg = 0;
+	if (fl->modif[L] == 1)
+		nbr = (long double)(va_arg(va, long double));
+	else
+		nbr = (double)(va_arg(va, double));
+	if (nbr < 0)
+		neg = 1;
 	nb_print = 0;
-	(void)fl;
-	nbr = (long double)(va_arg(va, long double));
-	rest = ft_ftoa(nbr);
-	ft_putstr(rest);
+	str = ft_ftoa(nbr, fl->preci);
+	if (fl->options[MINUS])
+		ft_opt_minus(fl, str, &nb_print, neg);
+	else if (fl->options[PLUS])
+		ft_opt_plus(fl, str, &nb_print, neg);
+	else if (fl->options[ZERO] && !(fl->options[PLUS]))
+		ft_opt_zero(fl, str, &nb_print, neg);
+	else
+		ft_opt_others(fl, str, &nb_print, neg);
 	return (nb_print);
 }

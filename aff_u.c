@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 13:52:49 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/02 11:58:12 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/07 11:27:00 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ int		aff_uint(t_final *fl, va_list av)
 	nb_print = 0;
 	nbr = cast_u(fl, av);
 	str = ft_itoa_base_u(nbr, 10);
+	if (ft_strcmp(str, "0") == 0 && fl->preci == 0)
+		str = NULL;
 	str = int_with_precision(str, fl->preci);;
 	if (fl->options[MINUS])
 		ft_opt_minus_u(fl, str, &nb_print);

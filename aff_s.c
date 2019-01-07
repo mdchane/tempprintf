@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 09:46:07 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/31 10:39:56 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/07 11:53:48 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	aff_str(t_final *fl, va_list av)
 
 	nb_print = 0;
 	str = va_arg(av, char *);
-	if (str)
+	if (str || (!str && fl->preci > -1))
 	{
 		if ((size_t)fl->preci < ft_strlen(str))
 			len_put = fl->preci;

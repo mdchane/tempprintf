@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printf_format.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 15:51:52 by dchane            #+#    #+#             */
-/*   Updated: 2019/01/06 16:06:32 by dchane           ###   ########.fr       */
+/*   Updated: 2019/01/07 12:05:57 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ p_func  *init_tab_func()
 	tab['i'] = aff_int;
 	tab['u'] = aff_uint;
 	tab['o'] = aff_oct;
-	tab['x'] = aff_deci;
-	tab['X'] = aff_deci;
+	tab['x'] = aff_hexa;
+	tab['X'] = aff_hexa;
 	tab['f'] = aff_float;
 	return (tab);
 }
