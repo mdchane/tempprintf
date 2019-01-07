@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/02 10:36:19 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/07 12:05:40 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/07 14:32:23 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,13 @@ int		aff_hexa(t_final *fl, va_list av)
 		ft_strupper(str);
 	if (ft_strcmp(str, "0") == 0 && fl->preci == 0)
 		str = NULL;
-	str = int_with_precision(str, fl->preci);
+	str = int_with_precision(str, fl->preci, 0);
 	if (fl->options[MINUS])
 		ft_opt_minus(fl, str, &nb_print, nbr);
 	else if (fl->options[ZERO] && fl->preci < 0)
 		ft_opt_zero(fl, str, &nb_print, nbr);
 	else
 		ft_opt_others1(fl, str, &nb_print, nbr);
+	ft_strdel(&str);
 	return (nb_print);
 }

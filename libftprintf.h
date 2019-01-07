@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 09:58:22 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/07 12:05:14 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/07 14:29:15 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int			ft_get_format(const char *format, t_final *final);
 
 p_func		*init_tab_func();
 int			print_format(va_list va, const char *format, p_func *tab, size_t *nb_print);
-char		*int_with_precision(char *str, int preci);
+char		*int_with_precision(char *str, int preci, int neg);
 intmax_t	cast_u(t_final *final, va_list av);
 
 

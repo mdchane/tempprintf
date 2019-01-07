@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 11:27:09 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/07 11:49:58 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/07 14:31:58 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,10 @@ int			aff_ptr(t_final *final, va_list av)
 	nb_print = 0;
 	adr = (unsigned long)va_arg(av, unsigned long);
 	str = ft_itoa_base_u(adr, 16);
-	str = int_with_precision(str, final->preci);
+	str = int_with_precision(str, final->preci, 0);
 	if (ft_strcmp(str, "0") == 0 && final->preci == 0)
 		str = NULL;
 	put_p(final, str, &nb_print);
+	ft_strdel(&str);
 	return (nb_print);
 }

@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 09:46:07 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/07 11:53:48 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/07 14:23:06 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ int	aff_str(t_final *fl, va_list av)
 	}
 	else
 		nb_print += ft_putstr("(null)");
+	//ft_strdel(&str);
 	return (nb_print);
 }

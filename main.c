@@ -66,10 +66,10 @@ ft_printf("\n");
   ft_printf("%s\n", NULL);
   ft_printf("%S\n", L"ݗݜशব");
   ft_printf("%s%s\n", "test", "test");
-  ft_printf("%s%s%s\n", "test", "test", "test");
-  ft_printf("%C\n", 15000);
+//   ft_printf("%s%s%s\n", "test", "test", "test");
+//   ft_printf("%C\n", 15000);
 
-	ft_printf("{%#20.5x}\n", 1);
+// 	ft_printf("{%#20.5x}\n", 1);
 
 	// ft_printf("my ft_printf  \n");
 	// ft_printf("MINUS:\n");

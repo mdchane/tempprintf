@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/02 15:55:46 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/07 10:29:19 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/07 13:53:32 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,6 @@ int		aff_float(t_final *fl, va_list va)
 		ft_opt_zero(fl, str, &nb_print, neg);
 	else
 		ft_opt_others(fl, str, &nb_print, neg);
+	ft_strdel(&str);
 	return (nb_print);
 }

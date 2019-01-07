@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 09:55:16 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/02 11:24:08 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/07 14:48:02 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int		aff_int(t_final *fl, va_list av)
 	str = ft_itoa_base(nbr, 10);
 	if (ft_strcmp(str, "0") == 0 && fl->preci == 0)
 		str = NULL;
-	str = int_with_precision(str + neg, fl->preci);;
+	str = int_with_precision(str, fl->preci, neg);
 	if (fl->options[MINUS])
 		ft_opt_minus(fl, str, &nb_print, neg);
 	else if (fl->options[PLUS])
@@ -115,5 +115,7 @@ int		aff_int(t_final *fl, va_list av)
 		ft_opt_zero(fl, str, &nb_print, neg);
 	else
 		ft_opt_others(fl, str, &nb_print, neg);
+	str -=neg;
+	ft_strdel(&str);
 	return (nb_print);
 }

@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 09:47:09 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/02 11:28:26 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/07 14:31:53 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,13 @@ int		aff_oct(t_final *fl, va_list av)
 	str = ft_itoa_base_u(nbr, 8);
 	if (ft_strcmp(str, "0") == 0 && fl->preci == 0)
 		str = NULL;
-	str = int_with_precision(str, fl->preci);
+	str = int_with_precision(str, fl->preci, 0);
 	if (fl->options[MINUS])
 		ft_opt_minus_o(fl, str, &nb_print, nbr);
 	else if (fl->options[ZERO] && fl->preci < 0)
 		ft_opt_zero_o(fl, str, &nb_print);
 	else
 		ft_opt_others(fl, str, &nb_print, nbr);
+	ft_strdel(&str);
 	return (nb_print);
 }
