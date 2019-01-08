@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/02 15:55:46 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/07 13:53:32 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/08 11:44:15 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	ft_opt_minus(t_final *final, char *str, int *nb_print, int neg)
 {
 	if (final->options[PLUS] && neg == 0)
-			*nb_print += ft_putchar('+');
+		*nb_print += ft_putchar('+');
 	else if (final->options[SPACE] && neg == 0)
 		*nb_print += ft_putchar(' ');
 	if (neg)
@@ -30,7 +30,8 @@ static void	ft_opt_zero(t_final *final, char *str, int *nb_print, int neg)
 		*nb_print += ft_putchar(' ');
 	if (final->preci >= 0)
 	{
-		*nb_print += put_n_char(' ', final->larg_min - ft_strlen(str) - *nb_print - neg);
+		*nb_print += put_n_char(' ', final->larg_min -
+			ft_strlen(str) - *nb_print - neg);
 		if (neg)
 			*nb_print += ft_putchar('-');
 	}
@@ -38,7 +39,8 @@ static void	ft_opt_zero(t_final *final, char *str, int *nb_print, int neg)
 	{
 		if (neg)
 			*nb_print += ft_putchar('-');
-		*nb_print += put_n_char('0', final->larg_min - ft_strlen(str) + neg - *nb_print);
+		*nb_print += put_n_char('0', final->larg_min -
+			ft_strlen(str) + neg - *nb_print);
 	}
 	*nb_print += ft_putstr(str + neg);
 }
@@ -51,11 +53,13 @@ static void	ft_opt_plus(t_final *final, char *str, int *nb_print, int neg)
 			*nb_print += ft_putchar('+');
 		else
 			*nb_print += ft_putchar('-');
-		*nb_print += put_n_char('0', final->larg_min - ft_strlen(str) + neg - 1);
+		*nb_print += put_n_char('0', final->larg_min -
+			ft_strlen(str) + neg - 1);
 	}
 	else
 	{
-		*nb_print += put_n_char(' ', final->larg_min - ft_strlen(str) + neg - 1);
+		*nb_print += put_n_char(' ', final->larg_min -
+			ft_strlen(str) + neg - 1);
 		if (neg == 0)
 			*nb_print += ft_putchar('+');
 		else
@@ -64,21 +68,22 @@ static void	ft_opt_plus(t_final *final, char *str, int *nb_print, int neg)
 	*nb_print += ft_putstr(str + neg);
 }
 
-static void ft_opt_others(t_final *fl, char *str, int *nb_print, int neg)
+static void	ft_opt_others(t_final *fl, char *str, int *nb_print, int neg)
 {
 	if (fl->options[SPACE] && neg == 0)
-			*nb_print += ft_putchar(' ');
-	*nb_print += put_n_char(' ', fl->larg_min - ft_strlen(str) - *nb_print);
+		*nb_print += ft_putchar(' ');
+	*nb_print += put_n_char(' ', fl->larg_min -
+		ft_strlen(str) - *nb_print);
 	if (neg)
 		*nb_print += ft_putchar('-');
 	*nb_print += ft_putstr(str + neg);
 }
 
-int		aff_float(t_final *fl, va_list va)
+int			aff_float(t_final *fl, va_list va)
 {
-	long double nbr;
-	char	*str;
-	int		nb_print;
+	long double	nbr;
+	char		*str;
+	int			nb_print;
 	int			neg;
 
 	neg = 0;

@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 09:12:02 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/20 12:07:22 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/08 11:48:51 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	aff_char(t_final *final, va_list av)
 
 	nb_print = 0;
 	if (final->modif[l] == 1)
-		c  = (unsigned long)va_arg(av, unsigned long);
+		c = (unsigned long)va_arg(av, unsigned long);
 	else
 		c = (char)va_arg(av, int);
 	c = (wint_t)c;

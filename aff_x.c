@@ -6,26 +6,26 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/02 10:36:19 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/07 14:32:23 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/08 11:35:31 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static void	ft_opt_minus(t_final *final, char *str, int *nb_print, uintmax_t	nbr)
+static void	ft_opt_minus(t_final *final, char *str, int *nb_p, uintmax_t nbr)
 {
 	if (final->options[DIESE] && final->preci <= 0 && nbr != 0)
 	{
 		if (final->type == 'X')
-			*nb_print += ft_putstr("0X");
+			*nb_p += ft_putstr("0X");
 		else
-			*nb_print += ft_putstr("0x");
+			*nb_p += ft_putstr("0x");
 	}
-	*nb_print += ft_putstr(str);
-	*nb_print += put_n_char(' ', final->larg_min - *nb_print);
+	*nb_p += ft_putstr(str);
+	*nb_p += put_n_char(' ', final->larg_min - *nb_p);
 }
 
-static void	ft_opt_zero(t_final *fl, char *str, int *nb_print, uintmax_t	nbr)
+static void	ft_opt_zero(t_final *fl, char *str, int *nb_print, uintmax_t nbr)
 {
 	if (fl->options[DIESE] && fl->preci <= 0 && nbr != 0)
 	{
@@ -41,40 +41,42 @@ static void	ft_opt_zero(t_final *fl, char *str, int *nb_print, uintmax_t	nbr)
 static void	ft_opt_others2(t_final *fl, char *str, int *nb_print)
 {
 	if (fl->options[DIESE])
-		{
+	{
+		*nb_print += put_n_char(' ', fl->larg_min - ft_strlen(str) - 2);
+		if (fl->type == 'X')
+			*nb_print += ft_putstr("0X");
+		else
+			*nb_print += ft_putstr("0x");
+	}
+	else
+		*nb_print += put_n_char(' ', fl->larg_min - ft_strlen(str));
+}
+
+static void	ft_opt_others1(t_final *fl, char *str, int *nb_print, uintmax_t nbr)
+{
+	if (fl->options[DIESE] && fl->preci <= 0)
+	{
+		if (nbr == 0)
+			*nb_print += put_n_char(' ', fl->larg_min -
+				ft_strlen(str) - 1 - fl->preci);
+		else
 			*nb_print += put_n_char(' ', fl->larg_min - ft_strlen(str) - 2);
+		if (nbr == 0 && fl->preci <= 0)
+			;
+		else
+		{
 			if (fl->type == 'X')
 				*nb_print += ft_putstr("0X");
 			else
 				*nb_print += ft_putstr("0x");
 		}
-		else
-			*nb_print += put_n_char(' ', fl->larg_min - ft_strlen(str));
-}
-
-static void	ft_opt_others1(t_final *fl, char *str, int *nb_print, uintmax_t	nbr)
-{
-	if (fl->options[DIESE] && fl->preci <= 0)
-		{
-			if (nbr == 0)
-				*nb_print += put_n_char(' ', fl->larg_min - ft_strlen(str) - 1 - fl->preci);
-			else
-				*nb_print += put_n_char(' ', fl->larg_min - ft_strlen(str) - 2);
-			if (nbr == 0 && fl->preci <= 0);
-			else
-			{
-				if (fl->type == 'X')
-					*nb_print += ft_putstr("0X");
-				else
-					*nb_print += ft_putstr("0x");
-			}
-		}
+	}
 	else
 		ft_opt_others2(fl, str, nb_print);
 	*nb_print += ft_putstr(str);
 }
 
-int		aff_hexa(t_final *fl, va_list av)
+int			aff_hexa(t_final *fl, va_list av)
 {
 	uintmax_t	nbr;
 	char		*str;

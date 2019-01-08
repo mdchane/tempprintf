@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 11:27:09 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/07 14:31:58 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/08 11:47:56 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,12 @@ static void	put_p(t_final *final, char *str, int *nb_print)
 		*nb_print += ft_putstr(str);
 	}
 }
+
 int			aff_ptr(t_final *final, va_list av)
 {
 	unsigned long	adr;
 	char			*str;
-	int			nb_print;
+	int				nb_print;
 
 	nb_print = 0;
 	adr = (unsigned long)va_arg(av, unsigned long);

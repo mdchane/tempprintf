@@ -6,30 +6,11 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:57:33 by mdchane           #+#    #+#             */
-/*   Updated: 2018/12/31 11:33:57 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/08 11:29:16 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-
-void	ft_print_final(t_final *final)
-{
-	printf("\n---------------\nprint_final : \nlarg_min = %d\npreci = %d\ntype = %c\n",
-	final->larg_min, final->preci, final->type);
-	printf("options:\n-+#0s\n");
-	ft_foreach(final->options, NB_OPTIONS, ft_putnbr);
-	printf("\nmodif:\nhlL\n");
-	ft_foreach(final->modif, NB_MODIF, ft_putnbr);
-	printf("\n---------------\n");
-}
-
-t_final	*init_final_format()
-{
-	t_final *final;
-
-	final = ft_memalloc(sizeof(t_final));
-	return (final);
-}
 
 int		ft_get_options(t_final *final, const char *fm)
 {
@@ -103,7 +84,7 @@ int		ft_get_modif(t_final *final, const char *fm)
 			final->modif[l] = 2;
 		else if (fm[i] == 'h' && final->modif[h] != 2)
 			final->modif[h] = 1;
-		else if (fm[i] == 'l'&& final->modif[l] != 2)
+		else if (fm[i] == 'l' && final->modif[l] != 2)
 			final->modif[l] = 1;
 		else if (fm[i] == 'L')
 			final->modif[L] = 1;
@@ -119,17 +100,4 @@ int		ft_get_type(t_final *final, const char *fm)
 	i = 1;
 	final->type = fm[i];
 	return (i + 1);
-}
-
-int		ft_get_format(const char *format, t_final *final)
-{
-	int		i;
-
-	i = 0;
-	i += ft_get_options(final, format);
-	i += ft_get_larg_min(final, format + i);
-	i += ft_get_preci(final, format + i);
-	i += ft_get_modif(final, format + i);
-	i += ft_get_type(final, format + i);
-	return (i);
 }
