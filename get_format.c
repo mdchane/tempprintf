@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:57:33 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/08 11:29:16 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/10 09:08:03 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,10 @@ int		ft_get_type(t_final *final, const char *fm)
 	int		i;
 
 	i = 1;
-	final->type = fm[i];
-	return (i + 1);
+	if (ft_strchr("%cspdiouxXf", fm[i]))
+	{
+		final->type = fm[i];
+		i++;
+	}
+	return (i);
 }

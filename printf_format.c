@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 15:51:52 by dchane            #+#    #+#             */
-/*   Updated: 2019/01/08 12:04:57 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/10 09:08:36 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int		print_format(va_list va, const char *fm, t_func *tab, size_t *nb_print)
 
 	final = init_final_format();
 	i = ft_get_format(fm, final);
-	if (ft_strchr("%cspdiouxXf", final->type))
+	if (final->type)
 		*nb_print += tab[(int)final->type](final, va);
 	ft_memdel((void **)&final);
 	return (i);
